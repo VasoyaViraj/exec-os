@@ -20,14 +20,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <ClerkProvider appearance={{ baseTheme: dark }}>
+      <html lang="en">
         <body
           className={`${montserrat.className} antialiased`}
         >
-
-        <ClerkProvider appearance={{ baseTheme: dark }}>
           {children}
-        </ClerkProvider>
           <footer className="footer-wrapper">
             <div className="section-heading">
               <p className="text-center text-sm text-muted-foreground">
@@ -37,5 +35,6 @@ export default function RootLayout({
           </footer>
         </body>
       </html>
+    </ClerkProvider>
   );
 }
