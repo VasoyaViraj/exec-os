@@ -33,11 +33,6 @@ export default async function MainLayout({
             icon: HomeIcon,
         },
         {
-            label: "Monitoring",
-            href: "/monitoring",
-            icon: MailIcon,
-        },
-        {
             label: "Settings",
             href: "/settings",
             icon: SettingsIcon,

@@ -26,13 +26,13 @@ export default function RootLayout({
           className={`${montserrat.className} antialiased`}
         >
           {children}
-          <footer className="footer-wrapper">
+          {/* <footer className="footer-wrapper">
             <div className="section-heading">
               <p className="text-center text-sm text-muted-foreground">
                 © {new Date().getFullYear()} ExecOS.
               </p>
             </div>
-          </footer>
+          </footer> */}
         </body>
       </html>
     </ClerkProvider>

@@ -144,3 +144,27 @@ export async function getUsersWithAgentEnabled() {
       and(eq(users.agentEnabled, true), eq(integrations.provider, "gmail")),
     );
 }
+
+export async function getLatestAgentRun(userId: string) {
+  const [run] = await db
+    .select()
+    .from(agentRuns)
+    .where(eq(agentRuns.userId, userId))
+    .orderBy(desc(agentRuns.startedAt))
+    .limit(1);
+  return run ?? null;
+}
+
+export async function getUnreadEmails(userId: string) {
+  const [result] = await db
+    .select()
+    .from(agentRuns)
+    .where(and(eq(agentRuns.userId, userId), eq(agentRuns.status, "success")))
+    .orderBy(desc(agentRuns.startedAt))
+    .limit(1);
+  return {
+    emailsProcessed: result?.emailsProcessed ?? 0,
+    draftsCreated: result?.draftsCreated ?? 0,
+    tasksCreated: result?.tasksCreated ?? 0,
+  };
+}
