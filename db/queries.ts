@@ -83,3 +83,54 @@ export async function getUserIntegrations(userId: string) {
     .where(eq(integrations.userId, userId));
   return results ?? [];
 }
+
+export async function createAgentRun(userId: string) {
+  const [result] = await db
+    .insert(agentRuns)
+    .values({ userId, status: "running" })
+    .returning();
+  return result ?? null;
+}
+
+export async function completeAgentRun(
+  agentRunId: string,
+  data: {
+    status: "success" | "failed";
+    summary: string;
+    actionsLog: ActionLogEntry[];
+    emailsProcessed: number;
+    tasksCreated: number;
+    draftsCreated: number;
+    errorMessage?: string;
+    durationMs: number;
+  },
+) {
+  const [run] = await db
+    .update(agentRuns)
+    .set({ ...data, completedAt: new Date() })
+    .where(eq(agentRuns.id, agentRunId))
+    .returning();
+  return run;
+}
+
+export async function createTask(data: {
+  userId: string;
+  title: string;
+  description?: string;
+  priority?: "low" | "medium" | "high";
+  dueDate?: Date | null;
+  createdByAgent?: boolean;
+}) {
+  const [task] = await db
+    .insert(tasks)
+    .values({
+      userId: data.userId,
+      title: data.title,
+      description: data.description ?? null,
+      priority: data.priority ?? "medium",
+      dueDate: data.dueDate ?? null,
+      createdByAgent: data.createdByAgent ?? false,
+    })
+    .returning();
+  return task;
+}
