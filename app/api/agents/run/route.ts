@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
-import { getUserByClerkId} from "@/db/queries";
+import { getUserByClerkId, getUsersWithAgentEnabled} from "@/db/queries";
 import { runAgent } from "@/lib/agent";
 
 export async function POST(request: NextRequest) {
@@ -34,5 +34,17 @@ export async function POST(request: NextRequest) {
     const result = await runAgent(user.id);
     return NextResponse.json(result);
   }
-  return NextResponse.json({ message : "agent run successfull" });
+
+  //cron job
+  const results = [];
+  const eligibleUsers = await getUsersWithAgentEnabled();
+  for (const { userId } of eligibleUsers) {
+    const result = await runAgent(userId);
+    results.push({
+      userId: userId,
+      status: result.status,
+      summary: result.summary,
+    });
+  }
+  return NextResponse.json({ results, processedCount: results.length });
 }

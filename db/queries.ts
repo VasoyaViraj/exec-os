@@ -134,3 +134,13 @@ export async function createTask(data: {
     .returning();
   return task;
 }
+
+export async function getUsersWithAgentEnabled() {
+  return db
+    .select({ userId: users.id, clerkId: users.clerkId })
+    .from(users)
+    .innerJoin(integrations, eq(users.id, integrations.userId))
+    .where(
+      and(eq(users.agentEnabled, true), eq(integrations.provider, "gmail")),
+    );
+}
