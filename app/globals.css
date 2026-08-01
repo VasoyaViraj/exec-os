@@ -59,7 +59,8 @@
   --popover-foreground: oklch(0.9 0.005 280);
   --primary: oklch(0.6 0.2 25);
   --primary-foreground: oklch(0.95 0.005 0);
-  --secondary: #008080; /* teal */
+  --secondary: #008080;
+  /* teal */
   --secondary-foreground: oklch(0.85 0.005 280);
   --muted: oklch(0.18 0.005 280);
   --muted-foreground: oklch(0.55 0.01 280);
@@ -86,14 +87,16 @@
 
 .dark {
   --background: oklch(0.1 0.005 280);
-  --foreground: #008080; /* teal */
+  --foreground: #008080;
+  /* teal */
   --card: oklch(0.15 0.005 280);
   --card-foreground: oklch(0.9 0.005 280);
   --popover: oklch(0.15 0.005 280);
   --popover-foreground: oklch(0.9 0.005 280);
   --primary: oklch(0.6 0.2 25);
   --primary-foreground: oklch(0.95 0.005 0);
-  --secondary: #008080; /* teal */
+  --secondary: #008080;
+  /* teal */
   --secondary-foreground: oklch(0.85 0.005 280);
   --muted: oklch(0.18 0.005 280);
   --muted-foreground: oklch(0.55 0.01 280);
@@ -462,25 +465,211 @@
   .spinner-icon {
     @apply mr-2 h-4 w-4 animate-spin;
   }
+
+  /* Landing Page Enhancements */
+  .hero-section {
+    @apply relative overflow-hidden;
+  }
+
+  .hero-content {
+    @apply flex flex-col items-center text-center max-w-4xl mx-auto;
+  }
+
+  .hero-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8 border border-primary/20;
+  }
+
+  .hero-title {
+    @apply text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-tight;
+  }
+
+  .hero-title-gradient {
+    @apply bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .logo-icon {
+    @apply w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-muted-foreground hover:text-foreground transition-colors;
+  }
+
+  .cta-button {
+    @apply bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/50 transition-all hover:shadow-xl hover:shadow-primary/60 hover:scale-105;
+  }
+
+  .cta-button-large {
+    @apply bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/50 transition-all hover:shadow-xl hover:shadow-primary/60 text-lg px-8;
+  }
+
+  .secondary-button {
+    @apply border-border hover:bg-accent;
+  }
+
+  .social-proof {
+    @apply mt-12 flex items-center justify-center gap-6;
+  }
+
+  .avatar-circle {
+    @apply w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-xs font-bold border-2 border-background;
+  }
+
+  /* Stats Section */
+  .stats-section {
+    @apply py-16 bg-card/50 backdrop-blur-sm;
+  }
+
+  .stats-grid {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto;
+  }
+
+  .stat-item {
+    @apply flex flex-col items-center text-center;
+  }
+
+  .stat-value {
+    @apply text-4xl md:text-5xl font-bold text-primary mb-1;
+  }
+
+  .stat-label {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* Features Section */
+  .features-section {
+    @apply py-24;
+  }
+
+  .section-header {
+    @apply text-center mb-16 max-w-3xl mx-auto;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-white mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-muted-foreground;
+  }
+
+  .features-grid {
+    @apply grid gap-8 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .feature-card {
+    @apply p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 border-border/50 hover:border-primary/50 bg-card/50 backdrop-blur-sm;
+  }
+
+  .feature-icon-wrapper {
+    @apply w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center;
+  }
+
+  /* How It Works Section */
+  .how-it-works-section {
+    @apply py-24 bg-card/30 backdrop-blur-sm;
+  }
+
+  .steps-grid {
+    @apply grid gap-8 md:grid-cols-3 max-w-5xl mx-auto;
+  }
+
+  .step-card {
+    @apply relative p-8 rounded-xl bg-card border border-border/50 hover:border-primary/50 transition-all;
+  }
+
+  .step-number {
+    @apply text-6xl font-bold text-primary/20 mb-4;
+  }
+
+  .step-title {
+    @apply text-xl font-semibold text-white mb-3;
+  }
+
+  .step-description {
+    @apply text-muted-foreground;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    @apply py-24;
+  }
+
+  .cta-card {
+    @apply relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-secondary/20 border border-primary/30 p-12 md:p-16 text-center;
+  }
+
+  .cta-title {
+    @apply text-3xl md:text-5xl font-bold text-white mb-4;
+  }
+
+  .cta-description {
+    @apply text-lg text-muted-foreground mb-8 max-w-2xl mx-auto;
+  }
+
+  .cta-buttons {
+    @apply flex flex-col sm:flex-row items-center justify-center gap-4 mb-6;
+  }
+
+  .cta-note {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* Footer */
+  .footer {
+    @apply border-t border-border bg-card/50 backdrop-blur-sm mt-auto;
+  }
+
+  .footer-content {
+    @apply grid grid-cols-1 md:grid-cols-4 gap-12 py-12;
+  }
+
+  .footer-brand {
+    @apply md:col-span-1;
+  }
+
+  .footer-links {
+    @apply grid grid-cols-3 gap-8 md:col-span-3;
+  }
+
+  .footer-heading {
+    @apply text-sm font-semibold text-white mb-4;
+  }
+
+  .footer-list {
+    @apply space-y-3;
+  }
+
+  .footer-list a {
+    @apply text-sm text-muted-foreground hover:text-foreground transition-colors;
+  }
+
+  .footer-bottom {
+    @apply border-t border-border py-6 text-center;
+  }
 }
 
 /* Twinkling stars background */
 @keyframes twinkle {
+
   0%,
   100% {
     opacity: 0.2;
   }
+
   50% {
     opacity: 1;
   }
 }
 
 @keyframes twinkle-drift {
+
   0%,
   100% {
     opacity: 0.1;
     transform: scale(0.8);
   }
+
   50% {
     opacity: 0.8;
     transform: scale(1.2);
@@ -493,86 +682,54 @@ body::before {
   inset: 0;
   z-index: -1;
   background-image:
-    radial-gradient(
-      1px 1px at 10% 15%,
+    radial-gradient(1px 1px at 10% 15%,
       rgba(255, 255, 255, 0.6) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 25% 35%,
+      transparent 50%),
+    radial-gradient(1px 1px at 25% 35%,
       rgba(255, 255, 255, 0.5) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1.5px 1.5px at 40% 10%,
+      transparent 50%),
+    radial-gradient(1.5px 1.5px at 40% 10%,
       rgba(255, 255, 255, 0.7) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 55% 45%,
+      transparent 50%),
+    radial-gradient(1px 1px at 55% 45%,
       rgba(255, 255, 255, 0.4) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1.5px 1.5px at 70% 20%,
+      transparent 50%),
+    radial-gradient(1.5px 1.5px at 70% 20%,
       rgba(255, 255, 255, 0.6) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 85% 55%,
+      transparent 50%),
+    radial-gradient(1px 1px at 85% 55%,
       rgba(255, 255, 255, 0.5) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 15% 70%,
+      transparent 50%),
+    radial-gradient(1px 1px at 15% 70%,
       rgba(255, 255, 255, 0.4) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1.5px 1.5px at 30% 85%,
+      transparent 50%),
+    radial-gradient(1.5px 1.5px at 30% 85%,
       rgba(255, 255, 255, 0.6) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 50% 65%,
+      transparent 50%),
+    radial-gradient(1px 1px at 50% 65%,
       rgba(255, 255, 255, 0.3) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 65% 80%,
+      transparent 50%),
+    radial-gradient(1px 1px at 65% 80%,
       rgba(255, 255, 255, 0.5) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1.5px 1.5px at 80% 70%,
+      transparent 50%),
+    radial-gradient(1.5px 1.5px at 80% 70%,
       rgba(255, 255, 255, 0.4) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 95% 40%,
+      transparent 50%),
+    radial-gradient(1px 1px at 95% 40%,
       rgba(255, 255, 255, 0.6) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 5% 50%,
+      transparent 50%),
+    radial-gradient(1px 1px at 5% 50%,
       rgba(255, 255, 255, 0.3) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 45% 90%,
+      transparent 50%),
+    radial-gradient(1px 1px at 45% 90%,
       rgba(255, 255, 255, 0.5) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1.5px 1.5px at 60% 5%,
+      transparent 50%),
+    radial-gradient(1.5px 1.5px at 60% 5%,
       rgba(255, 255, 255, 0.7) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 90% 90%,
+      transparent 50%),
+    radial-gradient(1px 1px at 90% 90%,
       rgba(255, 255, 255, 0.4) 50%,
-      transparent 50%
-    );
+      transparent 50%);
   animation: twinkle 4s ease-in-out infinite;
 }
 
@@ -582,56 +739,36 @@ body::after {
   inset: 0;
   z-index: -1;
   background-image:
-    radial-gradient(
-      1px 1px at 8% 25%,
+    radial-gradient(1px 1px at 8% 25%,
       rgba(255, 255, 255, 0.5) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1.5px 1.5px at 20% 60%,
+      transparent 50%),
+    radial-gradient(1.5px 1.5px at 20% 60%,
       rgba(255, 255, 255, 0.6) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 35% 40%,
+      transparent 50%),
+    radial-gradient(1px 1px at 35% 40%,
       rgba(255, 255, 255, 0.4) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 48% 75%,
+      transparent 50%),
+    radial-gradient(1px 1px at 48% 75%,
       rgba(255, 255, 255, 0.5) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1.5px 1.5px at 62% 30%,
+      transparent 50%),
+    radial-gradient(1.5px 1.5px at 62% 30%,
       rgba(255, 255, 255, 0.7) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 75% 50%,
+      transparent 50%),
+    radial-gradient(1px 1px at 75% 50%,
       rgba(255, 255, 255, 0.3) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 88% 15%,
+      transparent 50%),
+    radial-gradient(1px 1px at 88% 15%,
       rgba(255, 255, 255, 0.5) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 12% 95%,
+      transparent 50%),
+    radial-gradient(1px 1px at 12% 95%,
       rgba(255, 255, 255, 0.4) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1.5px 1.5px at 52% 50%,
+      transparent 50%),
+    radial-gradient(1.5px 1.5px at 52% 50%,
       rgba(255, 255, 255, 0.6) 50%,
-      transparent 50%
-    ),
-    radial-gradient(
-      1px 1px at 72% 95%,
+      transparent 50%),
+    radial-gradient(1px 1px at 72% 95%,
       rgba(255, 255, 255, 0.3) 50%,
-      transparent 50%
-    );
+      transparent 50%);
   animation: twinkle-drift 6s ease-in-out infinite 2s;
 }
 
@@ -639,9 +776,11 @@ body::after {
   * {
     @apply border-border outline-ring/50;
   }
+
   html {
     @apply bg-background;
   }
+
   body {
     @apply text-foreground;
     position: relative;
