@@ -26,17 +26,22 @@ export default async function MainLayout({
 
     // const user = await getOrCreateUser(userId, email, name);
 
-    const navItems = [
+      const navItems = [
         {
             label: "Dashboard",
             href: "/dashboard",
             icon: HomeIcon,
         },
         {
+            label: "Monitoring",
+            href: "/monitoring",
+            icon: MailIcon,
+        },
+        {
             label: "Settings",
             href: "/settings",
             icon: SettingsIcon,
-        }
+        },
     ];
 
   return (

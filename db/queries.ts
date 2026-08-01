@@ -168,3 +168,13 @@ export async function getUnreadEmails(userId: string) {
     tasksCreated: result?.tasksCreated ?? 0,
   };
 }
+
+export async function getAgentRuns(userId: string) {
+  const results = await db
+    .select()
+    .from(agentRuns)
+    .where(eq(agentRuns.userId, userId))
+    .orderBy(desc(agentRuns.startedAt))
+    .limit(20);
+  return results ?? [];
+}
